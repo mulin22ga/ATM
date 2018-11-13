@@ -16,13 +16,24 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-    }
-    public  void  Login(View view) {
         edUserid = findViewById(R.id.ed_userid);
         edPassword = findViewById(R.id.ed_password);
+        String userid = getSharedPreferences("ATM",MODE_PRIVATE)
+             .getString("USERID","");
+        edUserid.setText(userid);
+
+    }
+    public  void  Login(View view) {
+       //  edUserid = findViewById(R.id.ed_userid);
+       // edPassword = findViewById(R.id.ed_password);
         userid = edUserid.getText().toString();
         password = edPassword.getText().toString();
 if("aaa".equals(userid)&&"123".equals((password))) {
+    //如果成功登入會存檔案
+    getSharedPreferences("ATM",MODE_PRIVATE)
+            .edit()
+            .putString("USERID",userid)
+            .apply();
     setResult(RESULT_OK);
     finish();
 }
