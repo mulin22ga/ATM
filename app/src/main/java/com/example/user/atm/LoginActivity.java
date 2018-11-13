@@ -1,5 +1,6 @@
 package com.example.user.atm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,9 @@ if("aaa".equals(userid)&&"123".equals((password))) {
             .putString("USERID",userid)
             .apply();
     setResult(RESULT_OK);
+    finish();
+}else {
+    setResult(RESULT_CANCELED);
     finish();
 }
     }
