@@ -1,11 +1,12 @@
 package com.example.user.atm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class AgeActivity extends AppCompatActivity {
+public class AgeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,10 +16,13 @@ public class AgeActivity extends AppCompatActivity {
     public void next (View view) {
         EditText edAge = findViewById(R.id.edAge);
         String age = edAge.getText().toString();
-        getSharedPreferences("USER",MODE_PRIVATE)
-                .edit()
-                .putString("AGE",age)
-                .apply();
+        user.setAge(age);
+        Intent gender = new Intent(this,GenderActivity.class);
+        startActivity(gender);
 
     }
+    public void back(View view) {
+        finish();
+    }
+
 }

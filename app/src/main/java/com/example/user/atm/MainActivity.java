@@ -5,16 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final int RC_LOGIN = 100;
     boolean logon = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (!logon){
-            Intent intent =new Intent(this,LoginActivity.class);
-            startActivityForResult(intent,RC_LOGIN);
+        if (!logon) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivityForResult(intent, RC_LOGIN);
         }
     }
 
@@ -25,8 +26,12 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode != RESULT_OK) {
                 finish();
             } else {
-                Intent nickname = new Intent(this, NicknameActivity.class);
-                startActivity(nickname);
+                logon = true;
+                if (user.isValid()){
+                    Intent nick = new Intent(this, NicknameActivity.class);
+                    startActivity(nick);
+                }
             }
         }
-    }}
+    }
+}

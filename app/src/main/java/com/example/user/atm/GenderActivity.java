@@ -4,7 +4,7 @@ package com.example.user.atm;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GenderActivity extends AppCompatActivity {
+public class GenderActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
